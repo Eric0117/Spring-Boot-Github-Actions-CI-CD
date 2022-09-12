@@ -19,6 +19,6 @@ public class MainController {
 
     @GetMapping
     public String main() {
-        return "Hello World! => " + envName;
+        return "Hello World! V2 => " + envName;
     }
 }
