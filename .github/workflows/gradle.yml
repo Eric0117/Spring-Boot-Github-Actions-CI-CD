@@ -111,7 +111,7 @@ jobs:
         script: |
             var=$(docker ps -aq) | [ -z "$var" ] && echo "no running containers" || sudo docker rm -f $var
             sudo docker pull ${{ secrets.DOCKER_REPO }}/cicd-dev
-            docker-compose -f up -d
+            docker-compose up -d
             docker image prune -f
             
     ## time
