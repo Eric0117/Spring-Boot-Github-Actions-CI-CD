@@ -92,7 +92,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-              sudo docker rm -f $(docker ps -qa)
+              var=$(docker ps -q) | [ -z "$var" ] && echo "no running containers" || sudo docker rm -f $var
               sudo docker pull ${{ secrets.DOCKER_REPO }}/cicd-prd
               docker-compose up -d
               docker image prune -f
@@ -111,7 +111,7 @@ jobs:
         script: |
             var=$(docker ps -q) | [ -z "$var" ] && echo "no running containers" || sudo docker rm -f $var
             sudo docker pull ${{ secrets.DOCKER_REPO }}/cicd-dev
-            docker-compose up -d
+            docker-compose -f up -d
             docker image prune -f
             
     ## time
