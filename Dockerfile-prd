@@ -1,5 +1,5 @@
 FROM openjdk:8
 EXPOSE 8080
-ARG JAR_FILE=/build/libs/CICD-TEST-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=/build/libs/cicd-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","-Dspring.profiles.active=prd","/app.jar"]
